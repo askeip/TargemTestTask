@@ -1,0 +1,15 @@
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\obj\Debug\TargemTestTask.csprojResolveAssemblyReference.cache
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\obj\Debug\TargemTestTask.csproj.CoreCompileInputs.cache
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\bin\Debug\TargemTestTask.exe.config
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\bin\Debug\TargemTestTask.exe
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\bin\Debug\TargemTestTask.pdb
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\obj\Debug\TargemTestTask.exe
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\obj\Debug\TargemTestTask.pdb
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\bin\Debug\nunit.framework.dll
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\bin\Debug\nunit.framework.xml
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\bin\Debug\FluentAssertions.Core.dll
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\bin\Debug\FluentAssertions.dll
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\bin\Debug\FluentAssertions.pdb
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\bin\Debug\FluentAssertions.xml
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\bin\Debug\FluentAssertions.Core.pdb
+C:\Users\Евгений\source\repos\TargemTestTask\TargemTestTask\bin\Debug\FluentAssertions.Core.xml
