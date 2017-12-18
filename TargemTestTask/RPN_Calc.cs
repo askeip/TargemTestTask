@@ -38,7 +38,7 @@ namespace TargemTestTask
         {
             var stack = new Stack<Char>();
             var sb = new StringBuilder();
-            var typeOfLast = LastRead.Nothing;
+            var lastRead = SymbolType.Nothing;
 
             for (int i = 0; i < input.Length; i++)
             {
@@ -49,11 +49,11 @@ namespace TargemTestTask
                 }
                 else if (priorities.ContainsKey(e))
                 {
-                    typeOfLast = HandleOperator(e, typeOfLast, stack, sb);
+                    lastRead = HandleOperator(e, lastRead, stack, sb);
                 }
                 else if (Char.IsDigit(e) || IsPoint(e))
                 {
-                    if (typeOfLast == LastRead.Number)
+                    if (lastRead == SymbolType.Number)
                         throw new OperatorExpectedException();
                     var numberSb = new StringBuilder();
                     var pointsCount = 0;
@@ -76,7 +76,7 @@ namespace TargemTestTask
                     sb.Append(numberSb);
                     sb.Append(' ');
                     i--;
-                    typeOfLast = LastRead.Number;
+                    lastRead = SymbolType.Number;
                 }
                 else
                     throw new ArgumentException("Неправильный ввод");
@@ -129,13 +129,13 @@ namespace TargemTestTask
             return c == '.' || c == ',';
         }
 
-        private LastRead HandleOperator(char e, LastRead typeOfLast, Stack<char> stack, StringBuilder sb)
+        private SymbolType HandleOperator(char e, SymbolType lastRead, Stack<char> stack, StringBuilder sb)
         {
             if (e == '(' || e == ')')
             {
-                return HandleBrackets(e, typeOfLast, stack, sb);
+                return HandleBrackets(e, lastRead, stack, sb);
             }
-            if (typeOfLast == LastRead.Operator || typeOfLast == LastRead.OpenBracket || typeOfLast == LastRead.Nothing)
+            if (lastRead == SymbolType.Operator || lastRead == SymbolType.OpenBracket || lastRead == SymbolType.Nothing)
                 throw new OperatorUnexpectedException();
             if (stack.Count > 0 && priorities[stack.Peek()] >= priorities[e])
             {
@@ -144,23 +144,23 @@ namespace TargemTestTask
             }
             stack.Push(e);
 
-            return LastRead.Operator;
+            return SymbolType.Operator;
         }
 
-        private LastRead HandleBrackets(char e, LastRead typeOfLast, Stack<char> stack, StringBuilder sb)
+        private SymbolType HandleBrackets(char e, SymbolType lastRead, Stack<char> stack, StringBuilder sb)
         {
             if (e == '(')
             {
-                if (typeOfLast == LastRead.ClosedBracket)
+                if (lastRead == SymbolType.ClosedBracket)
                     throw new UnexpectedOpeningBracketException();
-                if (typeOfLast == LastRead.Number)
+                if (lastRead == SymbolType.Number)
                     throw new OperatorExpectedException();
                 stack.Push(e);
-                typeOfLast = LastRead.OpenBracket;
+                lastRead = SymbolType.OpenBracket;
             }
             else if (e == ')')
             {
-                if (typeOfLast == LastRead.Operator || stack.Count == 0)
+                if (lastRead == SymbolType.Operator || stack.Count == 0)
                     throw new UnexpectedClosingBracketException();
 
                 char op = stack.Pop();
@@ -174,12 +174,12 @@ namespace TargemTestTask
 
                 if (op != '(')
                     throw new UnexpectedClosingBracketException();
-                typeOfLast = LastRead.ClosedBracket;
+                lastRead = SymbolType.ClosedBracket;
             }
             else
                 throw new Exception();
 
-            return typeOfLast;
+            return lastRead;
         }
     }
 
@@ -206,7 +206,7 @@ namespace TargemTestTask
         public override string Message => "Отсутствует операнд для оператора";
     }
 
-    enum LastRead //rename
+    enum SymbolType
     {
         Nothing,
         Number,
