@@ -151,8 +151,10 @@ namespace TargemTestTask
         {
             if (e == '(')
             {
-                if (typeOfLast == LastRead.ClosedBracket || typeOfLast == LastRead.Number)
+                if (typeOfLast == LastRead.ClosedBracket)
                     throw new UnexpectedOpeningBracketException();
+                if (typeOfLast == LastRead.Number)
+                    throw new OperatorExpectedException();
                 stack.Push(e);
                 typeOfLast = LastRead.OpenBracket;
             }
